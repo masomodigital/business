@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
-    <!-- Updated link for favicon -->
-    <link href="/favicon.ico" rel="icon" type="image/x-icon"></link>
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBC Business Logo with Kenyan Currency Animation</title>
     <style>
         body {
             font-family: Lato;
@@ -15,194 +13,120 @@
 
         #mainContainer {
             text-align: center;
-        }
-
-        table {
-            width: auto;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            color: darkgreen;
-        }
-
-        .earnings {
-            color: red;
+            margin-top: 20px;
         }
 
         #logoImage {
             display: block;
             margin: 0 auto;
+            width: 200px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
         }
 
-        #signUpForm {
-            text-align: center;
-            margin: 20px;
-        }
-
-        input[type="text"], input[type="email"], input[type="tel"] {
+        .container {
+            position: relative;
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            margin-top: 20px;
         }
 
-        #submitBtn, #loginBtn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            color: white;
+        .person {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 200px;
+            z-index: 1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            background-image: url('https://i.imgur.com/24odp9p.png'); /* Replace with your person image */
         }
 
-        #submitBtn {
-            background-color: red;
+        .currency {
+            position: absolute;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 0;
+            animation: fall linear infinite;
         }
 
-        #loginBtn {
-            background-color: green;
+        .coin {
+            width: 50px;
+            height: 50px;
+        }
+
+        .note {
+            width: 100px;
+            height: 50px;
+        }
+
+        @keyframes fall {
+            0% { top: -50px; }
+            100% { top: 100vh; } /* Make the currency fall to the bottom of the container */
         }
     </style>
 </head>
 <body>
     <div id="mainContainer">
         <!-- Logo Image -->
-        <div id="topImageContainer" style="margin-top: 20px;">
-            <img alt="CBC Business Logo" id="logoImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcSAEXDRT_iT7w2CwPOro8pr5gXrFvfaRT02v1I7RH42O_0ggZyZzoPrcTklRYqVE0UOEChzFzDlxy1wxwPRgnarKZr9Q44sEPv6pMfAlRihWPBfr98GVcnkpv3wY8HdhIpe8wr23AiVPdBdFdxKA92wvKLWGy8U-6m_AkZxB5LZEOChN00tXxB1-qM0Y/w200-h161/CBC%20BUSINESS%20LOGO.png" />
-        </div>
-
-        <!-- Earnings Table -->
-        <table id="earnings-table">
-            <tr>
-                <th>Name of Activator</th>
-                <th>No. of App Installations</th>
-                <th>Earnings Per Month</th>
-            </tr>
-        </table>
-
-        <!-- Sign Up Form -->
-        <div id="signUpForm">
-            <h2>Activator Sign Up</h2>
-            <form id="signupForm">
-                <label for="firstName">First Name:</label>
-                <input id="firstName" name="firstName" required="" type="text" />
-
-                <label for="lastName">Last Name:</label>
-                <input id="lastName" name="lastName" required="" type="text" />
-
-                <label for="email">Email:</label>
-                <input id="email" name="email" required="" type="email" />
-
-                <label for="phoneNumber">Phone Number:</label>
-                <input id="phoneNumber" maxlength="10" name="phoneNumber" required="" type="tel" />
-
-                <button id="submitBtn" onclick="validateForm()" type="button">Submit</button>
-            </form>
-
-            <!-- Member Login Button -->
-            <a href="https://masomodigital.github.io/memberlogin/" id="loginBtn" target="_blank">MEMBER LOGIN</a>
+        <img id="logoImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcSAEXDRT_iT7w2CwPOro8pr5gXrFvfaRT02v1I7RH42O_0ggZyZzoPrcTklRYqVE0UOEChzFzDlxy1wxwPRgnarKZr9Q44sEPv6pMfAlRihWPBfr98GVcnkpv3wY8HdhIpe8wr23AiVPdBdFdxKA92wvKLWGy8U-6m_AkZxB5LZEOChN00tXxB1-qM0Y/w200-h161/CBC%20BUSINESS%20LOGO.png" alt="CBC Business Logo">
+        
+        <!-- Kenyan Currency Animation Container -->
+        <div class="container">
+            <div class="person"></div>
         </div>
     </div>
 
     <script>
-        function validateForm() {
-            const firstName = document.getElementById("firstName").value;
-            const lastName = document.getElementById("lastName").value;
-            const email = document.getElementById("email").value;
-            const phoneNumber = document.getElementById("phoneNumber").value;
-
-            if (!firstName || !lastName || !email || !phoneNumber) {
-                alert("Please fill in all the form fields before submitting.");
-            } else {
-                // Handle form submission (you can add further processing here)
-                // For now, just redirect
-                redirectToGoogleSite();
+        // Define the image sources for Kenyan coins and notes
+        const currencyImages = {
+            coins: {
+                '20 KSh': 'https://i.imgur.com/YLPzQmD.png',
+                '40 KSh': 'https://i.imgur.com/QLer7dK.png',
+                '10 KSh': 'https://i.imgur.com/mmYW9mt.png'
+            },
+            notes: {
+                '1000 KSh': 'https://i.imgur.com/GiPKKRa.png',
+                '500 KSh': 'https://i.imgur.com/uexiyEs.png',
+                '200 KSh': 'https://i.imgur.com/eeQyE1Q.png',
+                '100 KSh': 'https://i.imgur.com/cUR5TVo.png',
+                '50 KSh': 'https://i.imgur.com/AH89ISj.png'
             }
+        };
+
+        // Function to create coins and notes
+        function createCurrencyElement(value, isCoin) {
+            const element = document.createElement('div');
+            element.classList.add('currency', isCoin ? 'coin' : 'note');
+            element.style.left = Math.random() * 90 + 'vw'; // Random position within viewport width
+            element.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random duration between 3 and 6 seconds
+            element.style.backgroundImage = `url(${isCoin ? currencyImages.coins[value] : currencyImages.notes[value]})`;
+            return element;
         }
 
-        const activators = generateActivators(50);
-        let currentIndex = 0;
+        // Function to draw Kenyan currency animation
+        function drawKenyanCurrencyAnimation() {
+            const container = document.querySelector('.container');
 
-        function generateActivators(count) {
-            const activatorList = [];
-            for (let i = 1; i <= count; i++) {
-                const name = generateRandomName();
-                const installations = getRandomNumber(300, 750);
-                activatorList.push({ name, installations });
-            }
-            return activatorList;
+            // Create and append coins
+            Object.keys(currencyImages.coins).forEach(value => {
+                const coin = createCurrencyElement(value, true);
+                container.appendChild(coin);
+            });
+
+            // Create and append notes
+            Object.keys(currencyImages.notes).forEach(value => {
+                const note = createCurrencyElement(value, false);
+                container.appendChild(note);
+            });
         }
 
-        function getRandomNumber(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        function generateRandomName() {
-            const firstNames = ["Mercy", "Nancy", "Kennedy", "Lucas", "Dorris", "Aisha", "Adams", "Francis", "Kate", "Nyamweya", "Aisha", "Thabo", "Zanele"];
-            const lastNames = ["Wanjala", "Mutua", "Wafula", "Mwangi", "Karanja", "Were", "Kanake", "Koech", "Wambui", "Chakwera", "Manaseh", "Anyango"];
-
-            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-            return `${randomFirstName} ${randomLastName}`;
-        }
-
-        function updateTable() {
-            const table = document.getElementById("earnings-table");
-
-            while (table.rows.length > 1) {
-                table.deleteRow(1);
-            }
-
-            const activator = activators[currentIndex];
-            const newRow = table.insertRow(1);
-            const nameCell = newRow.insertCell(0);
-            const installationsCell = newRow.insertCell(1);
-            const earningsCell = newRow.insertCell(2);
-
-            nameCell.textContent = activator.name;
-            installationsCell.textContent = activator.installations;
-            earningsCell.innerHTML = `<span class="earnings">Ksh. ${numberWithCommas(activator.installations * 100)}.00</span>`;
-
-            currentIndex = (currentIndex + 1) % activators.length;
-        }
-
-        function continuousUpdate() {
-            setInterval(() => {
-                updateTable();
-            }, 1000);
-        }
-
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        function redirectToGoogleSite() {
-            window.location.href = 'https://masomodigital.github.io/business-page2/';
-        }
-
-        function redirectToMemberLogin() {
-            window.location.href = 'https://masomodigital.github.io/memberlogin/';
-        }
-
-        document.getElementById("loginBtn").addEventListener("click", redirectToMemberLogin);
-
-        updateTable();
-        continuousUpdate();
+        // Call the function to draw Kenyan currency animation and repeat every 1 second
+        setInterval(drawKenyanCurrencyAnimation, 1000);
     </script>
 </body>
 </html>
